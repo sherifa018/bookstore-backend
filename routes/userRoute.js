@@ -1,6 +1,7 @@
 import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import crypto from "crypto";
 import nodemailer from "nodemailer";
 import { User } from "../models/usermodel.js";
 
@@ -67,11 +68,7 @@ router.post("/signup", async (req, res) => {
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
-    const token = jwt.sign(
-      { isLogged: false },
-      "your_secret_key", // Use this key for development
-      { expiresIn: "1h" }
-    );
+    const token = crypto.randomBytes(32).toString("hex");
     // Save the user
     const newUser = new User({
       username,
