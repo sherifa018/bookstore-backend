@@ -29,7 +29,7 @@ const sendVerificationEmail = async (email, token) => {
     html: `
       <p>
         Click 
-        <a href="${process.env.FRONTEND_URL}/user/verify?token=${token}">here</a> 
+        <a href="https://book-store-frontend-five-ebon.vercel.app/user/verify?token=${token}">here</a> 
         to verify your email.
       </p>
     `,
